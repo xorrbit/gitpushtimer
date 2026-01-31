@@ -1,8 +1,8 @@
-# gitpushtimer
+# Git Push Timer
 
 Ever wondered how much of your life you've spent watching `git push` crawl across the network?
 
-**gitpushtimer** tracks every `git push` you make and tells you exactly how long you've been waiting. Works with manual pushes, scripts, CI tools, and even AI coding assistants like Claude Code.
+*Git Push Timer** tracks every `git push` you make and tells you exactly how long you've been waiting. Works with manual pushes, scripts, CI tools, and even AI coding assistants like Claude Code.
 
 ## Why?
 
