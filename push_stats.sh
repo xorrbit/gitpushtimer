@@ -17,12 +17,28 @@ if [[ ! -f "$LOG_FILE" ]]; then
   exit 1
 fi
 
-today_start=$(date -d "today 00:00:00" +%s)
-week_start=$(date -d "last monday 00:00:00" +%s)
-
-# If today is Monday, "last monday" gives the previous week's Monday
-if [[ $(date +%u) -eq 1 ]]; then
-  week_start=$(date -d "today 00:00:00" +%s)
+# Cross-platform date handling (GNU date vs BSD date on macOS)
+if date --version >/dev/null 2>&1; then
+  # GNU date (Linux)
+  today_start=$(date -d "today 00:00:00" +%s)
+  week_start=$(date -d "last monday 00:00:00" +%s)
+  # If today is Monday, "last monday" gives the previous week's Monday
+  if [[ $(date +%u) -eq 1 ]]; then
+    week_start=$(date -d "today 00:00:00" +%s)
+  fi
+else
+  # BSD date (macOS)
+  today_start=$(date -v0H -v0M -v0S +%s)
+  # Get day of week (1=Monday, 7=Sunday)
+  dow=$(date +%u)
+  if [[ "$dow" -eq 1 ]]; then
+    # Today is Monday
+    week_start=$today_start
+  else
+    # Go back to last Monday
+    days_since_monday=$((dow - 1))
+    week_start=$(date -v-${days_since_monday}d -v0H -v0M -v0S +%s)
+  fi
 fi
 
 today_total=0
