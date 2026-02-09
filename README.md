@@ -32,9 +32,15 @@ Check your stats anytime:
 ```
 
 ```
-Today:     45.3s (4 pushes)
-This week: 3m 22.1s (18 pushes)
+Today:       45.3s (4 pushes)
+This week:   3m 22.1s (18 pushes)
+
+Feb 01 - Feb 07 8m 12.4s (32 pushes)
+Jan 25 - Jan 31 5m 44.9s (24 pushes)
+Jan 18 - Jan 24 6m 1.3s (28 pushes)
 ```
+
+Stats show the current week (Sunday–Saturday) and up to 10 previous weeks.
 
 ## Log Format
 
